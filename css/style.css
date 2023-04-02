@@ -1,0 +1,235 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+nav {
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+
+}
+
+.nav-container {
+  /* max-width: 1200px; */
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  background: #3b5998;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  scroll-snap-align: unset;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+  margin: 0px 20px;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu li {
+  margin-right: 30px;
+}
+
+.nav-menu li a {
+  font-size: 18px;
+  color: white;
+  text-decoration: none;
+  padding: 10px 0;
+  position: relative;
+}
+
+nav .nav-menu li a:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0px;
+  left: 0px;
+  background-color: white;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s;
+}
+
+nav .nav-menu li a:hover:before {
+  transform: scaleX(1);
+}
+
+.hamburger-menu {
+  display: none;
+  cursor: pointer;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 5px 20px;
+  transition: 0.4s;
+}
+
+@media only screen and (max-width: 768px) {
+  .nav-menu {
+    display: none;
+  }
+
+  .hamburger-menu {
+    display: block;
+  }
+
+  .hamburger-menu.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .hamburger-menu.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger-menu.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .nav-menu.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(100, 123, 226, 0.795);
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    height: calc(100vh - 80px);
+    z-index: 999;
+  }
+
+  .nav-menu.active li {
+    margin-right: 0;
+    margin: 10px;
+    font-size: 20px;
+  }
+
+  .nav-menu li a {
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+    padding: 10px 0;
+    position: relative;
+
+  }
+
+}
+
+.airport{
+  line-height: 24px;
+    font-size: 15px;
+    font-weight: 400;
+    color: #777777;
+}
+
+.serv-img img{
+  height: 330px;
+}
+
+.cars-color{
+  letter-spacing: 1px; color: #3b5998; font-size: 25px; font-weight: 600;
+}
+
+.gape{
+  padding: 11px 10px 10px 30px;
+}
+.gape2{
+  padding-top: 20px;
+}
+
+@media(max-width:480px){
+  /* .tj-header{
+    display: none;
+    
+  } */
+  .bottom-nav{
+    display: block;
+   
+    
+  }
+  .logo{
+    display: block;
+  }
+  .tj-copyright{
+    padding: 0px 0px 95px 0px;
+  }
+  
+ 
+}
+@media(min-width:481px){
+  
+  .bottom-nav{
+    display: none;
+    visibility: hidden;
+  }
+}
+
+.search-car{
+  color: #fff;
+    text-transform: capitalize;
+    display: inline-block;
+    width: 155px;
+    margin: 0 auto 0;
+    text-align: center;
+    border-radius: 25px;
+    padding: 15px 0;
+    background-color: #3b5998;
+}
+.search-car:hover{
+  color: #fff;
+  text-decoration: none;
+}
+
+.tj-inner-banne{
+  float: left;
+    width: 100%;
+    background: url(../images/dalle\ check\ phone.png) top center no-repeat;
+    background-size: cover;
+    text-align: center;
+    position: relative;
+}
+
+.payment-field img{
+  width: 350px;
+
+}
+
+.btn-color{
+  background-color: #3b5998;
+  border-radius: 22px;
+  padding: 5px;
+  color: #fff;
+  border: none;
+}
+
+.fa-times{
+  color: red;
+  font-size: 25px;
+
+}
+
+.remore{
+  border: none;
+}
