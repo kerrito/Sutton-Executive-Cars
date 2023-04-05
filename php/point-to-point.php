@@ -1,23 +1,36 @@
 <?php
 include_once "config.php";
+// Fetching car id
 $car_id = $_POST['car_id'];
 
+// checking if session exist or not
 if (isset($_SESSION['location_credentail_id'])) {
+
+    // fetching location credential id
     $location_credentail_id = $_SESSION['location_credentail_id'];
 
+    // fecthing data from location_credential table
     $sql = "SELECT * FROM location_credential WHERE id=$location_credentail_id";
 
+    // storing fetched data into variable
     $res = mysqli_query($con, $sql);
 
+    // Checking if data exist or not
     if (mysqli_num_rows($res) > 0) {
+
+        // Converting fetched data into associated array form
         $result = mysqli_fetch_assoc($res);
+
+        // checking if via location exits or not
         if ($result['via_loc'] != "No via location" && !empty($result['via_loc'])) {
+
+            // converting via locations from string to array
             $via_location = explode("%%", $result['via_loc']);
         }
 ?>
 
         <div class="tab-pane active" id="point">
-            <form class="booking-frm" method="POST" id="ride-bform" action="update-loc-credentials.php?car-id=<?=$car_id?> ">
+            <form class="booking-frm" method="POST" id="ride-bform" action="php/update-loc-credentials.php?car-id=<?=$car_id?> ">
                 <div class="col-md-12">
                     <strong>Picking Up</strong>
                     <div class="field-holder">
@@ -91,10 +104,10 @@ if (isset($_SESSION['location_credentail_id'])) {
                 <div class="col-md-12">
                     <div class="field-holder">
                         <label for="pay_offline">
-                            <input type="radio" name="payment_type" id="pay_offline" checked value="Offline" required>Pay Offline
+                            <input type="radio" name="payment_type" value="Pay offline" id="pay_offline" checked value="Offline" required>Pay Offline
                         </label>
                         <label for="pay_online">
-                            <input type="radio" name="payment_type" id="pay_online" value="PayPal" required>PayPal
+                            <input type="radio" name="payment_type" value="Pay pal" id="pay_online" value="PayPal" required>PayPal
                         </label>
                     </div>
                 </div>
@@ -147,6 +160,7 @@ if (isset($_SESSION['location_credentail_id'])) {
 <?php
     }
 }else {
+    // if session is not exist then return 1
     echo 1;
 }
 

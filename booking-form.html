@@ -458,7 +458,7 @@
 	function booking_summary() {
 		// Booking summary section ajax
 		$.ajax({
-			url: "booking-summary.php",
+			url: "php/booking-summary.php",
 			success: function (load) {
 				document.getElementById("booking_summary").innerHTML = load;
 
@@ -486,7 +486,7 @@
 		
 	// Point to point section ajax start
 		$.ajax({
-			url: "point-to-point.php",
+			url: "php/point-to-point.php",
 			type:"post",
 			data:{"car_id":car_id},
 			success: function (load) {

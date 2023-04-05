@@ -143,11 +143,11 @@
 						</div>
 						<div class="tab-content">
 							<div class="tab-pane active" id="payment">
-								<form class="payment-frm" method="POST">
+								<form class="payment-frm" method="POST" action="php/update-payment-method.php">
 									<div class="col-md-12">
 										<div class="payment-field">
 											<label for="bank_wire">
-												<input type="radio" name="payment">Direct Bank Transfer
+												<input type="radio" name="payment" value="Direct Bank Transfer">Direct Bank Transfer
 											</label>
 
 										</div>
@@ -155,21 +155,21 @@
 									<div class="col-md-12 ">
 										<div class="payment-field">
 											<label for="credit_card">
-												<input type="radio" name="payment"> Credit Card
+												<input type="radio" name="payment" value="Credit Card"> Credit Card
 											</label>
 										</div>
 									</div>
-									<div class="col-md-12">
+									<!-- <div class="col-md-12">
 										<div class="payment-field">
 											<label for="cash">
 												<input type="radio" name="payment">Cash Payment
 											</label>
 										</div>
-									</div>
+									</div> -->
 									<div class="col-md-12">
 										<div class="payment-field">
 											<label for="paypal">
-												<input type="radio" name="payment">PayPal
+												<input type="radio" name="payment" value="PayPal">PayPal
 											</label>
 											<img src="images/paypal_visa-removebg-preview.png" />
 										</div>
@@ -177,7 +177,7 @@
 									<div class="col-md-12 ">
 										<a href="confirm-booking.html" class="back-btn" style="border-radius: 25px;"><i
 												class="fa fa-arrow-circle-left" aria-hidden="true"></i> Go Back</a>
-										<a href="payment-confirmation.html"><button type="button" class="book-btn"
+										<a ><button type="submit" class="book-btn"
 												style="border-radius: 25px;">Book Now <i
 													class="fa fa-arrow-circle-right"></i></button></a>
 									</div>
@@ -362,7 +362,7 @@
 	function booking_summary() {
 		// Booking summary section ajax
 		$.ajax({
-			url: "payment-booking-summary.php",
+			url: "php/payment-booking-summary.php",
 			success: function (load) {
 				if (load == 1) {
 					location.href = "index.html";

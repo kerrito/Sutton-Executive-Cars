@@ -53,7 +53,7 @@ if (isset($_SESSION['pickup_date']) && isset($_SESSION['drop_date'])) {
                                     <li><i class="fas fa-briefcase"></i><?= $value['luggage'] ?></li>
                                 </ul>
                             </div>
-                            <a href="check-form-fill.php?car-id=<?= $value['id'] ?>" class="tj-btn">Book Now <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+                            <a href="php/check-form-fill.php?car-id=<?= $value['id'] ?>" class="tj-btn">Book Now <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
                         </div>
                         <!--Fleet Grid Text End-->
                     </div>
@@ -98,7 +98,7 @@ if (isset($_SESSION['pickup_date']) && isset($_SESSION['drop_date'])) {
                                 <li><i class="fas fa-briefcase"></i><?= $value['luggage'] ?></li>
                             </ul>
                         </div>
-                        <a href="check-form-fill.php?car-id=<?= $value['id'] ?>" class="tj-btn">Book Now <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+                        <a href="php/check-form-fill.php?car-id=<?= $value['id'] ?>" class="tj-btn">Book Now <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
                     </div>
                     <!--Fleet Grid Text End-->
                 </div>

@@ -155,7 +155,7 @@
 							</div>
 							<div class="tab-content">
 								<div class="tab-pane active" id="confirm_booking">
-									<form class="cb-frm" method="POST" action="user-credentails.php" id="rider-info">
+									<form class="cb-frm" method="POST" action="php/user-credentails.php" id="rider-info">
 										<div class="col-md-6 col-sm-6">
 											<div class="info-field">
 												<label>First Name</label>
@@ -431,7 +431,7 @@
 	function booking_summary() {
 		// Booking summary section ajax
 		$.ajax({
-			url: "confirm-booking-summary.php",
+			url: "php/confirm-booking-summary.php",
 			success: function (load) {
 				if(load==1){
 					location.href="index.html";
