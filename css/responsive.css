@@ -473,6 +473,10 @@
 		width:100%;
 		margin-left:0
 	}
+	.contact_frm .frm-field input[type="tel"]{
+		width:100%;
+		margin-left:0
+	}
 	.tj-form-map .form-box{
 		padding: 21px 35px;
 	}
@@ -808,6 +812,9 @@
 		float:none;
 	}
 	.inner-holder label[for="email"]:before{
+		left:30px;
+	}
+	.inner-holder label[for="tel"]:before{
 		left:30px;
 	}
 	.tj-contact-section .tj-heading-style,

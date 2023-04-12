@@ -2099,7 +2099,7 @@ h1,h2,h3,h4,h5,h6{
 	border-bottom:1px solid #eee;
 	margin: 0 0 40px;
 }
-.tj-comment-form input[type="text"],.tj-comment-form input[type="email"]{
+.tj-comment-form input[type="text"],.tj-comment-form input[type="email"],.tj-comment-form input[type="tel"]{
 	width: 100%;
 	padding: 12px 20px;
 	font-size: 14px;
@@ -2381,6 +2381,18 @@ h1,h2,h3,h4,h5,h6{
 	margin-right:5px;
 }
 .contact_frm .frm-field input[type="email"]{
+	display:inline-block;
+	width:243px;
+	height:45px;
+	padding:0 16px;
+	border-radius:5px;
+	border:1px solid #e8e8e8;
+	font-size:14px;
+	line-height:24px;
+	color:#a6a6a6;
+	margin-left:5px;
+}
+.contact_frm .frm-field input[type="tel"]{
 	display:inline-block;
 	width:243px;
 	height:45px;
@@ -3866,7 +3878,7 @@ h1,h2,h3,h4,h5,h6{
 	left:15px;
 	color:#a6a6a6;
 }
-.reg-frm input[type="text"],.reg-frm input[type="email"],
+.reg-frm input[type="text"],.reg-frm input[type="email"],.reg-frm input[type="tel"],
 .reg-frm input[type="password"],.login-frm input[type="text"],
 .login-frm input[type="email"],.login-frm input[type="password"]{
 	width:100%;

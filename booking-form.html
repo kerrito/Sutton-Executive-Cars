@@ -29,6 +29,13 @@
 	      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	    <![endif]-->
 
+		<style>
+			/* For hide google logo */
+			.pac-logo::after {
+				display: none;
+			}
+		</style>
+
 </head>
 
 <body>
@@ -110,6 +117,9 @@
 						<li><a href="aboutus.html">About Us</a></li>
 						<li><a href="booking-form.html">Booking</a></li>
 						<li><a href="contact.html">Contact Us</a></li>
+						<li id="register_link"> <a href="register.html">Register</a></li>
+						<li id="login_link"> <a href="register.html?page=login">Login</a></li>
+						<li id="logout_link" class="d-none"> <a href="php/logout.php">Logout</a></li>
 					</ul>
 					<div class="hamburger-menu">
 						<div class="bar"></div>
@@ -443,7 +453,11 @@
 	<script src="js/color-switcher.js"></script>
 	<script src="js/jquery.cookie.min.js"></script>
 	<script src="js/tweetie.js"></script>
-	<script src="js/custom.js"></script>
+	<!-- <script src="js/custom.js"></script> -->
+	<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeQe2ssPi2J25rTU9c6YZpylpr6v4TuZY&libraries=places&callback=initMap"
+    async defer></script>
+	<script src="js/auto-complete.js"></script>
 	<!-- Js Files End -->
 </body>
 
@@ -515,6 +529,10 @@
 	
 	// Point to point section function calling
 		poiny_to_point();
+		
+		
+		// calling function 
+	check_login();
 
 
 	})
@@ -551,6 +569,29 @@ $(document).ready(function() {
             }
         });
     });
+
+	
+// ------------------------------------------------------------------------------------------
+	
+	// to ckeck login is true or not 
+function check_login(){
+	var login=sessionStorage.getItem("login");
+	if(login=="true"){
+    // removing class display none 
+		document.getElementById("logout_link").classList.remove("d-none");
+
+    // adding class display none
+		document.getElementById("register_link").classList.add("d-none");
+		document.getElementById("login_link").classList.add("d-none");
+
+	}
+}
+
+
+
+function date_restrict(selected_date){
+  datePicker_Id.min = selected_date
+}
 </script>
 <script src="js/nav.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>

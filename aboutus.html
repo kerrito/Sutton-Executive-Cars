@@ -110,6 +110,9 @@
 						<li><a href="aboutus.html">About Us</a></li>
 						<li><a href="booking-form.html">Booking</a></li>
 						<li><a href="contact.html">Contact Us</a></li>
+						<li id="register_link"> <a href="register.html">Register</a></li>
+						<li id="login_link"> <a href="register.html?page=login">Login</a></li>
+						<li id="logout_link" class="d-none"> <a href="php/logout.php">Logout</a></li>
 					</ul>
 					<div class="hamburger-menu">
 						<div class="bar"></div>
@@ -403,3 +406,25 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
 <script src="js/script.js"></script>
+<script>
+	// to ckeck login is true or not 
+function check_login(){
+	var login=sessionStorage.getItem("login");
+	if(login=="true"){
+    // removing class display none 
+		document.getElementById("logout_link").classList.remove("d-none");
+
+    // adding class display none
+		document.getElementById("register_link").classList.add("d-none");
+		document.getElementById("login_link").classList.add("d-none");
+
+	}
+}
+
+// setting function to ba call upon window load
+window.addEventListener("load",(event)=>{
+
+  // calling function 
+	check_login();
+})
+</script>
