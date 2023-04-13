@@ -9,6 +9,13 @@ function initMap(search_id) {
         var place = autocomplete.getPlace();
         var url=place.url
         document.getElementById(search_id+"_lat").value=url;
+	    var value=document.getElementById(search_id).value
+        console.log(search_id)
+        console.log(value)
+        sessionStorage.removeItem(search_id)
+        sessionStorage.setItem(search_id,value);
+        
+	    
         // console.log(url)
         // var long=place.geometry.location.lng();
         // var lat=place.geometry.location.lat();

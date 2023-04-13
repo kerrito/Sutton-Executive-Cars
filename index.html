@@ -575,6 +575,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
 <script src="js/script.js"></script>
+<script src="js/notify.min.js"></script>
 
 <script>
 	// to ckeck login is true or not 
@@ -596,11 +597,36 @@ window.addEventListener("load",(event)=>{
 
   // calling function 
 	check_login()
+
+	// calling function
+	notify();
 })
 
 
 function date_restrict(selected_date){
   datePicker_Id.min = selected_date
 }
+
+function notify(){
+	// fetching url
+	var link = window.location.href;
+
+// making new url
+var url = new URL(link);
+
+// searching for car-id to get it value
+var error = url.searchParams.get("error");
+
+if(error=="error"){
+	$.notify("First book your ride",{
+		position:"right",
+		className:"warn",
+		showAnimation:'slideDown',
+		autoHideDelay:20000
+	})
+}
+
+}
+
 
 </script>

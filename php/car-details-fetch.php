@@ -17,7 +17,7 @@ if (isset($_SESSION['pickup_date']) && isset($_SESSION['drop_date'])) {
     $sql = "SELECT * FROM car_details";
     $res = mysqli_query($con, $sql);
     if (mysqli_num_rows($res) > 0) {
-        $x=10001;
+        $x = 10001;
         foreach ($res as $value) {
             $car_id = $value['id'];
             $q = "SELECT * FROM ride WHERE `car_id`= $car_id AND (( `pickup_date`<='$pickup_date' AND `drop_date`>='$pickup_date') OR (`pickup_date`<='$drop_date' AND `drop_date`>='$drop_date'))";
@@ -63,14 +63,19 @@ if (isset($_SESSION['pickup_date']) && isset($_SESSION['drop_date'])) {
             <?php
             }
         }
-        if($x==10001){
+        if ($x == 10001) {
             ?>
-            <div class="col-md-6 col-sm-6">
-                
+            <div class="container my-5">
+                <div class="row justify-content-center my-5">
+                    <div class="col-md-5 mb-5">
+                        <h2 class="text-center my-5">Sorry we don&apos;t any vehicles right now</h2>
+
+                    </div>
+                </div>
             </div>
-            
-            
-            <?php
+
+
+        <?php
         }
     }
 } else {
@@ -78,7 +83,7 @@ if (isset($_SESSION['pickup_date']) && isset($_SESSION['drop_date'])) {
     $res = mysqli_query($con, $sql);
     if (mysqli_num_rows($res) > 0) {
         foreach ($res as $value) {
-            ?>
+        ?>
             <div class="col-md-6 col-sm-6">
                 <div class="fleet-grid-box">
                     <!--Fleet Grid Thumb Start-->
