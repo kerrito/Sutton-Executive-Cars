@@ -22,6 +22,7 @@ $sql="INSERT INTO `signup` SET `name`='$name',`email`='$email',`number`=$num,`pa
     $_SESSION['email'] = $email;
     $_SESSION['pass'] = $pass;
     $_SESSION['num'] = $num;
+    $_SESSION['user_role'] = $result['user_role'];
 
     // redirecting to home page
     echo "<script>

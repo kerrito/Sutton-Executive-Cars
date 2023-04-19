@@ -15,6 +15,7 @@ if(mysqli_num_rows($res)>0){
     $_SESSION['num']=$result['number'];
     $_SESSION['email']=$email;
     $_SESSION['pass']=$pass;
+    $_SESSION['user_role'] = $result['user_role'];
 
 
     // redirecting to home page

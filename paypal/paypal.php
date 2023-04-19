@@ -11,7 +11,7 @@ define("CLIENT_SECRET","ENyyM3J9Zb4rd_2yoMQNdb4LRe8TTpVy8JcI7CWX9COzHk-j0JkAifU4
 
 define("PAYPAL_RETURN_URL","http://localhost:8080/sultan-car/Sutton-Executive-Cars/paypal/paypalthird.php");
 define("PAYPAL_CANCEL_URL","http://localhost:8080/sultan-car/Sutton-Executive-Cars/payment.html?msg=failed");
-define("PAYPAL_CURRENCY",'USD');
+define("PAYPAL_CURRENCY",'GBP');
 
 $gateway = Omnipay::create("PayPal_Rest");
 

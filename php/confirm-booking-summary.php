@@ -72,7 +72,7 @@ if (isset($_SESSION['location_credentail_id'])) {
                     </ul>
                     <div class="fare-box">
                         <strong>Trip Estimation</strong>
-                        <span class="trip_est">Not Available</span>
+                        <span class="trip_est">&pound; <?=($ride_result['ride_distance']*$car_result['price'])?></span>
                         <div class="est-cost">
                             <strong>Cost Estimation</strong>
                             <div class="total-outer">
@@ -80,13 +80,13 @@ if (isset($_SESSION['location_credentail_id'])) {
                                 <span class="curr"></span>
                             </div>
                         </div>
-                        <div class="ride_price_breakdown">
-                            <button type="button" class="price_btn" data-toggle="modal" data-target="#ride_pricing_popup" id="ride_popup">Pricing Breakdown <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+                        <!-- <div class="ride_price_breakdown">
+                            <button type="button" class="price_btn" data-toggle="modal" data-target="#ride_pricing_popup" id="ride_popup">Pricing Breakdown <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button> -->
                             <!-- Modal Popup Start -->
-                            <div id="ride_pricing_popup" class="modal fade" role="dialog">
-                                <div class="modal-dialog">
+                            <!-- <div id="ride_pricing_popup" class="modal fade" role="dialog">
+                                <div class="modal-dialog"> -->
                                     <!-- Modal Popup Content Start-->
-                                    <div class="modal-content">
+                                    <!-- <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                                             <h4 class="modal-title">Ride Pricing Breakdown</h4>
@@ -97,12 +97,12 @@ if (isset($_SESSION['location_credentail_id'])) {
                                         <div class="modal-footer">
                                             <h4>Thank you for using Prime Cab</h4>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <!-- Modal Popup Content End-->
-                                </div>
-                            </div>
+                                <!-- </div>
+                            </div> -->
                             <!-- Modal Popup End -->
-                        </div>
+                        <!-- </div> -->
                     </div>
                 </div>
     <?php

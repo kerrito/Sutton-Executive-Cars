@@ -453,20 +453,25 @@
 	<script src="js/color-switcher.js"></script>
 	<script src="js/jquery.cookie.min.js"></script>
 	<script src="js/tweetie.js"></script>
-	<!-- <script src="js/custom.js"></script> -->
-	<script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeQe2ssPi2J25rTU9c6YZpylpr6v4TuZY&libraries=places&callback=initMap"
-    async defer></script>
-	<script src="js/auto-complete.js"></script>
-	<!-- Js Files End -->
 </body>
 
 <!-- Mirrored from themesjungle.net/html/prime-cab/booking-form.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 13 Feb 2023 17:52:08 GMT -->
 
 </html>
 
+	<!-- <script src="js/custom.js"></script> -->
+	<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeQe2ssPi2J25rTU9c6YZpylpr6v4TuZY&libraries=places&callback=initMap"
+    async defer></script>
+	<script src="js/auto-complete.js"></script>
+	<!-- Js Files End -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
 <script>
+// ---------------------------------------------------------------------------------
+
+
+
+
 // ---------------------------------------------------------------------------------
 	// Booking summary section function
 	function booking_summary() {
@@ -486,7 +491,7 @@
 // --------------------------------------------------------------------------------
 
 	// Point to point section function start
-	function poiny_to_point() {
+	function point_to_point(car_id_from_car_field) {
 		
 		// fetching url
 		var link = window.location.href;
@@ -495,7 +500,7 @@
         var url = new URL(link);
 
 		// searching for car-id to get it value
-        var car_id = url.searchParams.get("car-id")
+        var car_id = (car_id_from_car_field)==0?url.searchParams.get("car-id"):car_id_from_car_field
 
 		
 	// Point to point section ajax start
@@ -528,11 +533,11 @@
 
 	
 	// Point to point section function calling
-		poiny_to_point();
+	point_to_point(0);
 		
 		
 		// calling function 
-	check_login();
+	check_login();	
 
 
 	})
@@ -587,10 +592,10 @@ function check_login(){
 	}
 }
 
-
+// -------------------------------------------------------------------------------------------
 
 function date_restrict(selected_date){
-  datePicker_Id.min = selected_date
+//   datePicker_Id.min = selected_date
 }
 </script>
 <script src="js/nav.js"></script>

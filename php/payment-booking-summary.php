@@ -66,9 +66,9 @@ if (isset($_SESSION['location_credentail_id'])) {
                         <li><span>Booking Reference: </span><?= $location_credentail_id ?></li>
                         <li><span>Journey Type: </span>One Way</li>
                         <li>
-                            <p class="mb-0">Distance & Time: </p><span id="kilo_meter">2,522</span> km & 23 hours 7 mins
+                            <p class="mb-0">Distance & Time: </p><span id="kilo_meter"><?=$ride_result['ride_distance']?></span> Miles
                         </li>
-                        <li><span>One Way Fare: </span>Euro <span id="price"><?= $car_result['price'] ?></span></li>
+                        <li><span>One Way Fare: </span>&pound; <span id="price"><?= $car_result['price'] ?></span></li>
                     </ul>
                     <div class="journey-info">
                         <h4>One Way Journey</h4>
@@ -79,38 +79,14 @@ if (isset($_SESSION['location_credentail_id'])) {
                         <li><span>To: </span><?= $result['drop_loc'] ?></li>
                         <li><span>Pickup Date: </span><?= $result['pickup_date'] ?></li>
                         <li><span>Pickup Time: </span><?= $result['pickup_time'] ?></li>
-                        <li><span>Fare Details: </span>Basic Amount: Euro <span id="amount">450.00</span></li>
+                        <li><span>Fare Details: </span>Basic Amount: &pound; <span id="amount"><?=$car_result['price']*$ride_result['ride_distance']?></span></li>
                     </ul>
                     <div class="fare-box ms-2">
-                        <strong>Total Fare: <span>Euro <span id="total_amount">450.00</span></span></strong>
+                        <strong>Total Fare: <span>&pound; <span id="total_amount"><?=$car_result['price']*$ride_result['ride_distance']?></span></span></strong>
                         <span>( inclusive of All Taxes )</span>
                     </div>
                 </div>
 
-
-                <script>
-                    function get_amount() {
-                        console.log("ok function")
-                        var kilo_meter = document.getElementById("kilo_meter").innerHTML
-                        console.log(kilo_meter)
-                        var price = document.getElementById("price").innerHTML
-                        console.log(price)
-                        var total_amount = kilo_meter * price
-                        console.log(total_amount)
-                        document.getElementById("total_amount").innerHTML = total_amount;
-                    }
-
-
-                    // Declaring Event listener when window load
-                    window.addEventListener("scroll", (event) => {
-
-
-                        // Get total amount function
-                        get_amount()
-
-                    })
-                    // End Event listener
-                </script>
 <?php
             }
         }
