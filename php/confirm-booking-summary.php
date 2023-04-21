@@ -63,12 +63,12 @@ if (isset($_SESSION['location_credentail_id'])) {
                         <li><span>Pickup Time: </span>
                             <div class="pick_time info-outer"><?=$result['pickup_time']?></div>
                         </li>
-                        <li><span>Dropoff Date: </span>
-                            <div class="drop_date info-outer"><?=$result['drop_date']?></div>
+                        <!-- <li><span>Dropoff Date: </span>
+                            <div class="drop_date info-outer"></div>
                         </li>
                         <li><span>Dropoff Time: </span>
-                            <div class="drop_time info-outer"><?=$result['drop_time']?></div>
-                        </li>
+                            <div class="drop_time info-outer"></div>
+                        </li> -->
                     </ul>
                     <div class="fare-box">
                         <strong>Trip Estimation</strong>
@@ -106,8 +106,14 @@ if (isset($_SESSION['location_credentail_id'])) {
                     </div>
                 </div>
     <?php
+            }else{
+                echo 1;
             }
+        }else{
+            echo 1;
         }
+    }else{
+        echo 1;
     }
 } else {
     echo 1;

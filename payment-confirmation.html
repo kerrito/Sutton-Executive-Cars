@@ -325,6 +325,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
 <script src="js/script.js"></script>
 <script>
+	
+	// function to deatroy session stroage items
+	function destroy_session(){
+		for (var i=1;i<=100;i++){
+      if(sessionStorage.getItem("via"+i)){
+        sessionStorage.removeItem("via"+i)
+      }
+    }
+	}
+	//-----------------------------------------------------------------------------
 	// to ckeck login is true or not 
 	function check_login() {
 		var login = sessionStorage.getItem("login");
@@ -397,6 +407,9 @@
 
 		// calling function
 		fetch_id_from_url();
+
+		// calling function
+		destroy_session()
 
 	})
 			// End Event listener

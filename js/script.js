@@ -49,7 +49,7 @@ let field = 1;
 function add(){
   if(document.getElementById("fields").childElementCount<=3){
      document.getElementById('fields').innerHTML+=`<div id="input`+field+`">
-     <input type="search" id="via`+field+`" class="mt-3" onfocus="initMap('via`+field+`','')" name="via_location[]" placeholder="Locations" pattern="[A-za-z0-9,./()'' ]{3,100}" title="Via Location must contain 3 to 100 character no special character allowed other than , . / () '' " required>
+     <input type="search" id="via`+field+`" class="mt-3" onfocus="initMap('via`+field+`','')" name="via_location[]" placeholder="Locations" pattern="[A-za-z0-9,./()''-& ]{3,100}" title="Via Location must contain 3 to 100 character no special character allowed other than , . / () '' -&" required>
      <input type="hidden" id="via`+field+`_lat" name="via_lat[]">
        <button type="button" onclick='remove("input`+field+`","via`+field+`","index")' class="remore"><i class="fas fa-times"></i></button>
        </div>`

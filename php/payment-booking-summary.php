@@ -68,7 +68,7 @@ if (isset($_SESSION['location_credentail_id'])) {
                         <li>
                             <p class="mb-0">Distance & Time: </p><span id="kilo_meter"><?=$ride_result['ride_distance']?></span> Miles
                         </li>
-                        <li><span>One Way Fare: </span>&pound; <span id="price"><?= $car_result['price'] ?></span></li>
+                        <li><span>One Way Fare: </span> <span id="price">&pound; <?= $car_result['price'] ?> per mile</span></li>
                     </ul>
                     <div class="journey-info">
                         <h4>One Way Journey</h4>

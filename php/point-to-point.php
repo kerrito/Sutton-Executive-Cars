@@ -41,7 +41,7 @@ if (isset($_SESSION['location_credentail_id'])) {
                     <strong>Picking Up</strong>
                     <div class="field-holder">
                         <span class="fas fa-map-marker-alt"></span>
-                        <input id="point_start_loc" onfocus="initMap('point_start_loc','','no')" type="search" name="pickup_loc" value="<?= $result['pickup_loc'] ?>" placeholder="Pickup Location" pattern="[A-za-z0-9,./()'' ]{3,100}" title="Pickup Location must contain 3 to 100 character no special character allowed other than , . / () '' " required>
+                        <input id="point_start_loc" onfocus="initMap('point_start_loc','','no')" type="search" name="pickup_loc" value="<?= $result['pickup_loc'] ?>" placeholder="Pickup Location" pattern="[A-za-z0-9,./()''-& ]{3,100}" title="Pickup Location must contain 3 to 100 character no special character allowed other than , . / () '' -&" required>
                         <input type="hidden" id="point_start_loc_lat" value="<?= $result['pickup_latitude'] ?>" name="pickup_lat">
                     </div>
                 </div>
@@ -65,7 +65,7 @@ if (isset($_SESSION['location_credentail_id'])) {
                     <strong>Dropoff</strong>
                     <div class="field-holder">
                         <span class="fas fa-map-marker-alt"></span>
-                        <input type="search" id="point_end_loc" onfocus="initMap('point_end_loc','','no')" name="dropoff_loc" value="<?= $result['drop_loc'] ?>" placeholder="Dropoff Location" pattern="[A-za-z0-9,./()'' ]{3,100}" title="Drop Location must contain 3 to 100 character no special character allowed other than , . / () '' " required>
+                        <input type="search" id="point_end_loc" onfocus="initMap('point_end_loc','','no')" name="dropoff_loc" value="<?= $result['drop_loc'] ?>" placeholder="Dropoff Location" pattern="[A-za-z0-9,./()''-& ]{3,100}" title="Drop Location must contain 3 to 100 character no special character allowed other than , . / () '' -&" required>
                         <input type="hidden" id="point_end_loc_lat" name="drop_lat" value="<?= $result['drop_latitude'] ?>">
                     </div>
                 </div>
@@ -102,7 +102,7 @@ if (isset($_SESSION['location_credentail_id'])) {
                         foreach ($via_location as $value) {
                     ?>
                             <div id="input<?= $x ?>">
-                                <input type="search" class="mt-3 via_location_childs" id="via<?= $x ?>" onfocus="initMap('via<?= $x ?>','','no')" name="via_location[]" value="<?= $value ?>" placeholder="Locations" pattern="[A-za-z0-9,./()'' ]{3,100}" title="Via Location must contain 3 to 100 character no special character allowed other than , . / () '' " required>
+                                <input type="search" class="mt-3 via_location_childs" id="via<?= $x ?>" onfocus="initMap('via<?= $x ?>','','no')" name="via_location[]" value="<?= $value ?>" placeholder="Locations" pattern="[A-za-z0-9,./()''-& ]{3,100}" title="Via Location must contain 3 to 100 character no special character allowed other than , . / () '' -&" required>
                                 <input type="hidden" id="via<?= $x ?>_lat" name="via_lat[]" value="<?= $via_latitude[$x] ?>">
                                 <button type="button" onclick='remove("input<?= $x ?>","","booking-form")' class="remore"><i class="fas fa-times"></i></button>
                             </div>
@@ -157,11 +157,12 @@ if (isset($_SESSION['location_credentail_id'])) {
                     </div>
                     <div class="col-md-12">
                         <div class="field-holder">
-                            <div class="select-list">
-                                <select name="service_rate" id="rate_list" class="selectpicker">
-                                    <option value="<?= $car_result['price'] ?>">&pound;  <?= $car_result['price'] ?> per mile</option>
-                                </select>
-                            </div>
+                            <!-- <div class="select-list"> -->
+                                <input type="text" name="service_rate" id="rate_list" class="" value="&pound; <?= $car_result['price'] ?> per mile" readonly>
+                                <!-- <select name="service_rate" id="rate_list" class="selectpicker">
+                                    <option value="">&pound;   per mile</option>
+                                </select> -->
+                            <!-- </div> -->
                         </div>
                     </div>
                 <?php

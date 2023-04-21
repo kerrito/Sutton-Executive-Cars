@@ -1,7 +1,7 @@
 function initMap(search_id,run_calculate,submit_form) {
   var dis=0;
     var submit_check=submit_form;
-    if(search_id!=undefined){
+    if(search_id!=undefined && search_id!=''){
     var options = {
         componentRestrictions: { country: 'UK' } // Restrict suggestions to the UK
     };
@@ -22,7 +22,8 @@ function initMap(search_id,run_calculate,submit_form) {
         // document.getElementById(search_id+"_lat").value=lat;
         // document.getElementById(search_id+"_long").value=long;
         // console.log(long+" "+lat);
-        console.log(place); // Log the selected place object to the console
+        console.log(place); 
+        // Log the selected place object to the console
     });
 }
 
@@ -48,6 +49,8 @@ function initMap(search_id,run_calculate,submit_form) {
           document.getElementById("total_distance_of_trip").value=dis  
           sessionStorage.removeItem("distance_in_mile")
           sessionStorage.setItem("distance_in_mile",dis)
+
+          
           
         } else {
             submit_check="false";

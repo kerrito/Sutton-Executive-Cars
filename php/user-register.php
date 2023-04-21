@@ -2,9 +2,9 @@
 include_once "config.php";
 
 // fetching user credentials
-$name=$_POST['name'];
-$email=$_POST['email'];
-$pass=md5($_POST['pass']);
+$name=mysqli_real_escape_string($con,$_POST['name']) ;
+$email=mysqli_real_escape_string($con,$_POST['email']);
+$pass=mysqli_real_escape_string($con,md5($_POST['pass']));
 $num=$_POST['numb'];
 
 

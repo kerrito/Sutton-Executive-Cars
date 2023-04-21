@@ -51,7 +51,7 @@ if (isset($_POST['btn'])) {
         $class = mysqli_real_escape_string($con, $_POST['class']);
         $passenger = mysqli_real_escape_string($con, $_POST['passenger']);
         $luggage = mysqli_real_escape_string($con, $_POST['luggage']);
-        $sql = "UPDATE `car_details` SET `name`='$name',`price`=$price,`class`='$class',`luggage`='$luggage',`passengers`='$passenger',`img`='$newpath' WHERE `id`=$car_id";
+        $sql = "UPDATE `car_details` SET `name`='$name',`price`=$price,`class`='$class',`luggage`='$luggage',`passengers`='$passenger' WHERE `id`=$car_id";
         if (mysqli_query($con, $sql)) {
             $_SESSION['msg'] = "New Car Data has been added successfully";
 

@@ -65,22 +65,26 @@ if (isset($_SESSION['location_credentail_id'])) {
 
                     // Converting fetched data into associated array form
                     $car_result = mysqli_fetch_assoc($car_res);
-                    if (isset($_SESSION['login']) && $_SESSION['login'] == "true") {
-
-                        // Fetching data from sessions
-                        $name = $_SESSION['name'];
-                        $email = $_SESSION['email'];
-                        $pass = $_SESSION['pass'];
-                        $num = $_SESSION['num'];
 
 
+                    // fecthing data from users details table by car id
+                    $Query = "SELECT * FROM users WHERE `loc_cren_id`=$location_credentail_id";
+
+                    // storing fetched data into variable
+                    $user_res = mysqli_query($con, $Query);
+
+                    // Checking if data exist or not
+                    if (mysqli_num_rows($user_res) > 0) {
+
+                        // Converting fetched data into associated array form
+                        $user_result = mysqli_fetch_assoc($user_res);
+
+                        //"shoaibtechy.j75@gmail.com"
                         // Setting emails
                         $mailto = array($_SESSION['email'], "Suttonexecutivecars@gmail.com");
 
-                        // assiging value to variable
-                        $check_result_login=1101;
-
-
+                        // Initailizing variable to check condations if email sent or not
+                        $check_result = 1101;
                         // loops for email
                         foreach ($mailto as $value) {
                             // setting new mail
@@ -108,7 +112,7 @@ if (isset($_SESSION['location_credentail_id'])) {
                             $mail->setFrom("admin@suttonexecutivecars.co.uk");
 
                             // setting reciver email
-                            $mail->addAddress($value,$name);
+                            $mail->addAddress($value, $user_result['name']);
 
                             // setting html 
                             $mail->isHTML(true);
@@ -116,166 +120,8 @@ if (isset($_SESSION['location_credentail_id'])) {
                             // setting subject
                             $mail->Subject = "Sutton - Booking Confirmed ($location_credentail_id)";
 
-                            // Creating html body for email
+
                             $body = '<!DOCTYPE html>
-                                         <html>
-                    
-                                         <head>
-                                        <title>Book a Cab</title>
-                    
-                                        </head>
-                    
-                                    <body style="font-family: Poppins, sans-serif;font-size: 16px;line-height: 1.5;color: #333;background-color: #f5f5f5;padding-top:10px">
-                                        <div style="max-width: 600px;margin: 0 auto;background-color: #fff;padding: 30px;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);border-radius: 10px;border-color: #3b5998;font-size:15px;">
-                                        <div style="text-align:center">
-                                            <img src="https://i.pinimg.com/564x/91/f0/33/91f0330d711d29a3e8645f27afb3d286.jpg" alt="Company Logo" height="50px" style="margin:auto">
-                                            <h1 style="font-size: 1.2rem; margin-bottom: 20px; color: #3b5998;">Sutton Executive Cars Birmingham</h1>
-                                        </div>
-                                            <p style="margin-bottom: 20px;font-size:15px;">Dear customer, you have requested a car booking, Thanks for a ride with Sutton Cars. Take Care, Have a safe ride.
-                                                Your ride details are as follows:</p>
-                                                <ul style="margin-left:18px;padding:0;">
-                                                <li style="margin-bottom:10px"><strong>Pickup Location:</strong><a href="' . $result['pickup_latitude'] . '" style="color: #333;">' . $result['pickup_loc'] . '</a></li>
-                                                <li style="margin-bottom:10px"><strong>Drop Location:</strong><a href="' . $result['drop_latitude'] . '" style="color: #333;">' . $result['drop_loc'] . '</a> </li>
-                                                <li style="margin-bottom:10px"><strong>Customer Name:</strong> ' . $user_result['name'] . ' </li>
-                                                <li style="margin-bottom:10px"><strong>Customer Number:</strong> ' . $user_result['number'] . ' </li>
-                                                <li style="margin-bottom:10px"><strong>Date:</strong> ' . $result['pickup_date'] . ' to ' . $result['drop_date'] . ' </li>
-                                                <li style="margin-bottom:10px"><strong>Time:</strong> ' . $result['pickup_time'] . ' to ' . $result['drop_time'] . '</li>
-                                                <li><strong>Vechile:</strong> ' . $car_result['name'] . '</li>
-                                            </ul>
-                                            <p style="margin: 20px 0;">Any query contact Admin</p>
-                                            <p>email at : <a href="mailto:suttonexecutivecars@gmail.com">suttonexecutivecars@gmail.com</a></p>
-                                            <p style="font-size: 14px;margin-top:30px;">© 2023 All rights resvered.</p>
-                                        </div>
-                                    </body>
-                                    </html>';
-
-
-                            
-                            // setting body
-                            $mail->Body = $body;
-
-                            // checking if email is sent or not
-                            if ($mail->send()) {
-                                $check_result_login++;
-                            }
-
-                            // closing smtp server
-                            $mail->smtpClose();
-                        }
-
-                        
-                        if ($check_result_login != 1101) {
-                            $pay=$result['payment'];
-
-                            // Redirecting to payment confirmation page
-                            echo "<script>location.href='../payment-confirmation.html?id=$location_credentail_id&pay=$pay'</script>";
-                        }
-                    } else {
-
-                        // fecthing data from users details table by car id
-                        $Query = "SELECT * FROM users WHERE `loc_cren_id`=$location_credentail_id";
-
-                        // storing fetched data into variable
-                        $user_res = mysqli_query($con, $Query);
-
-                        // Checking if data exist or not
-                        if (mysqli_num_rows($user_res) > 0) {
-
-                            // Converting fetched data into associated array form
-                            $user_result = mysqli_fetch_assoc($user_res);
-
-                            //"shoaibtechy.j75@gmail.com"
-                            // Setting emails
-                            $mailto = array($_SESSION['email'], "Suttonexecutivecars@gmail.com");
-
-                            // Initailizing variable to check condations if email sent or not
-                            $check_result = 1101;
-                            // loops for email
-                            foreach ($mailto as $value) {
-                                // setting new mail
-                                $mail = new PHPMailer(true);
-
-                                // setting smtp server
-                                $mail->isSMTP();
-
-                                // Setting Auth true
-                                $mail->SMTPAuth   = true;
-
-                                // setting host
-                                $mail->Host = "mail.suttonexecutivecars.co.uk";
-
-                                // setting port
-                                $mail->Port = 587;
-
-                                // setting host username
-                                $mail->Username = "admin@suttonexecutivecars.co.uk";
-
-                                // setting host password
-                                $mail->Password = "Sutton123!@#";
-
-                                // setting sender eamil
-                                $mail->setFrom("admin@suttonexecutivecars.co.uk");
-
-                                // setting reciver email
-                                $mail->addAddress($value, $user_result['name']);
-
-                                // setting html 
-                                $mail->isHTML(true);
-
-                                // setting subject
-                                $mail->Subject = "Sutton - Booking Confirmed ($location_credentail_id)";
-
-                                // Creating Html Body
-                                //         $body = "<div class='booking-summary'>
-                                //     <h3>Booking Summary</h3>
-                                //     <ul class='booking-info'>
-                                //         <li><span>Booking Reference: </span>" . $location_credentail_id . "</li>
-                                //         <li><span>Journey Type: </span>" . $journey_type . "</li>
-                                //         <li><span>Booked Car: <span >" . $car_result['name'] . "</span></li>
-                                //         <li><span>One Way Fare: </span>Euro <span class='price'>" . $car_result['price'] . "</span></li>
-                                //         <li>
-                                //             <span class='mb-0 '>Distance & Time:<span> <span id='kilo_meter'>2,522</span> km & 23 hours 7 mins
-                                //         </li>
-                                //     </ul>
-                                //     <div class='journey-info'>
-                                //         <h3>" . $journey_type . " Journey</h3>
-
-                                //     </div>
-                                //     <ul class='service-info ms-2'>
-                                //     <h4>Customer Summary</h4>
-                                //         <li><span>First Name: </span>" . $user_result['name'] . "</li>
-                                //         <li><span>Last Name: </span>" . $user_result['last_name'] . "</li>
-                                //         <li><span>Contact Number: </span>" . $user_result['number'] . "</li>
-                                //     <h4>Pick Up Summary</h4>
-                                //         <li><span>From: </span>" . $result['pickup_loc'] . "</li>
-                                //         <li><span>Pickup Date: </span>" . $result['pickup_date'] . "</li>
-                                //         <li><span>Pickup Time: </span>" . $result['pickup_time'] . "</li>
-                                //     <h4>Drop Summary</h4>   
-                                //         <li><span>To: </span>" . $result['drop_loc'] . "</li>
-                                //         <li><span>Drop Date: </span>" . $result['drop_date'] . "</li>
-                                //         <li><span>Drop Time: </span>" . $result['drop_time'] . "</li>
-                                //     <h4>Via Locations Summary</h4>
-                                //     ";
-                                //         if ($result['via_loc'] != "No via location" && !empty($result['via_loc'])) {
-                                //             foreach ($via_location as $value) {
-                                //                 $body .= "<li><span>Via Location: </span>" . $value . "</li>";
-                                //             }
-                                //         } else {
-                                //             $body .= "<li><span>Via Location: </span>No Via Location</li>";
-                                //         }
-
-                                //         $body .= "<h4>Payment Method Summary</h4>
-                                //        <li><span>Payment Method: </span>" . $ride_result['payment_method'] . "</li>
-                                //        <h4>Payable Amount Summary</h4>
-                                //         <li><span>Fare Details: </span>Basic Amount: Euro <span id='amount'>450.00</span></li>
-                                //     </ul>
-                                //     <div class='fare-box ms-2'>
-                                //         <strong>Total Fare: <span>Euro <span id='total_amount'>450.00</span></span></strong>
-                                //         <span>( inclusive of All Taxes )</span>
-                                //     </div>
-                                //  </div>";
-
-                                $body = '<!DOCTYPE html>
                                          <html>
                     
                                          <head>
@@ -296,8 +142,8 @@ if (isset($_SESSION['location_credentail_id'])) {
                                                 <li style="margin-bottom:10px"><strong>Drop Location:</strong><a href="' . $result['drop_latitude'] . '" style="color: #333;">' . $result['drop_loc'] . '</a> </li>
                                                 <li style="margin-bottom:10px"><strong>Customer Name:</strong> ' . $user_result['name'] . ' </li>
                                                 <li style="margin-bottom:10px"><strong>Customer Number:</strong> ' . $user_result['number'] . ' </li>
-                                                <li style="margin-bottom:10px"><strong>Date:</strong> ' . $result['pickup_date'] . ' to ' . $result['drop_date'] . ' </li>
-                                                <li style="margin-bottom:10px"><strong>Time:</strong> ' . $result['pickup_time'] . ' to ' . $result['drop_time'] . '</li>
+                                                <li style="margin-bottom:10px"><strong>Date:</strong> ' . $result['pickup_date'] .  ' </li>
+                                                <li style="margin-bottom:10px"><strong>Time:</strong> ' . $result['pickup_time'] .  '</li>
                                                 <li><strong>Vechile:</strong> ' . $car_result['name'] . '</li>
                                             </ul>
                                             <p style="margin: 20px 0;">Any query contact Admin</p>
@@ -308,30 +154,29 @@ if (isset($_SESSION['location_credentail_id'])) {
                                     </html>';
 
 
-                                // setting body
-                                $mail->Body = $body;
+                            // setting body
+                            $mail->Body = $body;
 
-                                // checking if email is sent or not
-                                if ($mail->send()) {
+                            // checking if email is sent or not
+                            if ($mail->send()) {
 
-                                    $check_result++;
-                                }
-
-                                // closing smtp server
-                                $mail->smtpClose();
+                                $check_result++;
                             }
 
-                            if ($check_result != 1101) {
-                                $pay=$result['payment'];
-
-                                // Redirecting to payment confirmation page
-                                echo "<script>location.href='../payment-confirmation.html?id=$location_credentail_id&pay=$pay'</script>";
-                            }
-                        }else{
-                            
-                            // Redirecting to confirm-booking page to fill user credential form
-                            echo "<script>location.href='../confirm-booking.html'</script>";
+                            // closing smtp server
+                            $mail->smtpClose();
                         }
+
+                        if ($check_result != 1101) {
+                            $pay = $result['payment'];
+
+                            // Redirecting to payment confirmation page
+                            echo "<script>location.href='../payment-confirmation.html?id=$location_credentail_id&pay=$pay'</script>";
+                        }
+                    } else {
+
+                        // Redirecting to confirm-booking page to fill user credential form
+                        echo "<script>location.href='../confirm-booking.html'</script>";
                     }
                 } else {
 
@@ -353,4 +198,8 @@ if (isset($_SESSION['location_credentail_id'])) {
         // Redirecting to confirm-booking page to fill user credential form
         echo "<script>location.href='../confirm-booking.html'</script>";
     }
+}else{
+    
+        // Redirecting to Home page to location credential form
+        echo "<script>location.href='../index.html'</script>";
 }

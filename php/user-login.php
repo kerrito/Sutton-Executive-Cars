@@ -1,8 +1,9 @@
 <?php 
 include_once "config.php";
 
-$email=$_POST['email'];
-$pass=md5($_POST['pass']);
+
+$email=mysqli_real_escape_string($con,$_POST['email']);
+$pass=mysqli_real_escape_string($con,md5($_POST['pass']));
 
 
 $sql="SELECT * FROM signup WHERE `email`='$email' AND `pass`='$pass'";

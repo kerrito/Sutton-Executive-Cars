@@ -170,7 +170,7 @@
 											<h4>Picking Up</h4>
 											<div class="field-box">
 												<span class="fas fa-search"></span>
-												<input type="search" id="Pickup" onfocus="initMap('Pickup','','no')" name="trip_pick_loc" placeholder="Pickup Locations" pattern="[A-za-z0-9,./()'' ]{3,100}" title="Pickup Location must contain 3 to 100 character no special character allowed other than , . / () '' " required>
+												<input type="search" id="Pickup" onfocus="initMap('Pickup','','no')" name="trip_pick_loc" placeholder="Pickup Locations" pattern="[A-za-z0-9,./()''-& ]{3,100}" title="Pickup Location must contain 3 to 100 character no special character allowed other than , . / () '' -&" required>
 												<input type="hidden" id="Pickup_lat" name="pickup_lat">
 											</div>
 										</div>
@@ -191,7 +191,7 @@
 											<h4>Dropping Off</h4>
 											<div class="field-box">
 												<span class="fas fa-search"></span>
-												<input type="search" id="drop" name="trip_drop_loc" placeholder="Dropping Locations" onfocus="initMap('drop','','no')" pattern="[A-za-z0-9,./()'' ]{3,100}" title="Drop Location must contain 3 to 100 character no special character allowed other than , . / () '' " required>
+												<input type="search" id="drop" name="trip_drop_loc" placeholder="Dropping Locations" onfocus="initMap('drop','','no')" pattern="[A-za-z0-9,./()''-& ]{3,100}" title="Drop Location must contain 3 to 100 character no special character allowed other than , . / () '' -&" required>
 												<input type="hidden" id="drop_lat" name="drop_lat">
 											</div>
 										</div>
@@ -578,6 +578,15 @@
 <script src="js/notify.min.js"></script>
 
 <script>
+	// function to deatroy session stroage items
+	function destroy_session(){
+		for (var i=1;i<=100;i++){
+      if(sessionStorage.getItem("via"+i)){
+        sessionStorage.removeItem("via"+i)
+      }
+    }
+	}
+	//------------------------------------------------------------------------------
 	// to ckeck login is true or not 
 function check_login(){
 	var login=sessionStorage.getItem("login");
@@ -600,6 +609,9 @@ window.addEventListener("load",(event)=>{
 
 	// calling function
 	notify();
+
+	// calling function
+	destroy_session();
 })
 
 

@@ -187,16 +187,16 @@
 										</div>
 										<div class="field-holder">
 											<span class="fas fa-lock"></span>
-											<input type="password" name="pass" placeholder="Password" pattern="[0-9]{8,16}" title="Phone Number must contain 8 to 16 numbers" required>
+											<input type="password" name="pass" placeholder="Password" pattern="[A-Za-z0-9,.+@%&$]{6,16}" title="Password must contain 6 to 16 numbers no special character allowed other than ,.+@%&$" required>
 										</div>
 										<a href="#" class="forget-pass">Forget Password?</a>
 										<button type="submit" class="reg-btn" style="border-radius: 25px;">Login <i
 												class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
-										<button type="submit" class="facebook-btn" style="border-radius: 25px;">Login
+										<!-- <button type="submit" class="facebook-btn" style="border-radius: 25px;">Login
 											with Facebook <i class="fa fa-arrow-circle-right"
 												aria-hidden="true"></i></button>
 										<button type="submit" class="google-btn" style="border-radius: 25px;">Login with
-											Google <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+											Google <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button> -->
 									</form>
 								</div>
 							</div>
@@ -233,7 +233,7 @@
 										<h3 id="register_error" class="text-danger text-center mb-3"></h3>
 										<div class="field-holder">
 											<span class="far fa-user"></span>
-											<input type="text" name="name" placeholder="Username" pattern="[A-za-z ]{3,16}" title="Name must contain 3 to 16 character no special character allowed" required>
+											<input type="text" name="name" placeholder="Username" pattern="[A-za-z0-9 ]{3,16}" title="Name must contain 3 to 16 character no special character allowed" required>
 										</div>
 										<div class="field-holder">
 											<span class="far fa-envelope"></span>
@@ -245,7 +245,7 @@
 										</div>
 										<div class="field-holder">
 											<span class="fas fa-lock"></span>
-											<input type="password" name="pass" placeholder="Password" pattern="[0-9]{8,16}" title="Phone Number must contain 8 to 16 numbers" required>
+											<input type="password" name="pass" placeholder="Password" pattern="[A-Za-z0-9,.+@%&$]{6,16}" title="Password must contain 6 to 16 numbers no special character allowed other than ,.+@%&$" required>
 										</div>
 										<label for="terms">
 											<input type="checkbox" name="terms" id="terms">
@@ -253,11 +253,11 @@
 										</label>
 										<button type="submit" class="reg-btn" style="border-radius: 25px;">Signup <i
 												class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
-										<button type="submit" class="facebook-btn" style="border-radius: 25px;">Login
+										<!-- <button type="submit" class="facebook-btn" style="border-radius: 25px;">Login
 											with Facebook <i class="fa fa-arrow-circle-right"
 												aria-hidden="true"></i></button>
 										<button type="submit" class="google-btn" style="border-radius: 25px;">Login with
-											Google <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+											Google <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button> -->
 									</form>
 								</div>
 							</div>
@@ -425,6 +425,8 @@
 			document.getElementById("register_link").classList.add("d-none");
 			document.getElementById("login_link").classList.add("d-none");
 
+           // redirecting to home page
+            location.href='index.html'
 		}
 	}
 

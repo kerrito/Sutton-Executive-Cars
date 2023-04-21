@@ -1,5 +1,24 @@
 <?php
 include_once "../php/config.php";
+if ($_SESSION['login'] == "true") {
+    if ($_SESSION['user_role'] == 1) {
+		// redirecting to home page
+        echo "<script>
+    location.href='car.php'
+    </script>";
+    } else {
+
+        // redirecting to home page
+        echo "<script>
+    location.href='../index.html'
+    </script>";
+    }
+} else {
+    // redirecting to home page
+    echo "<script>
+    location.href='login.php'
+    </script>";
+}
 
 if (isset($_POST['email']) && isset($_POST['pass'])) {
 	$email = $_POST['email'];
@@ -106,13 +125,13 @@ include_once "slicing/herader-links.php";
 										</div>
 										<div class="field-holder">
 											<span class="fas fa-lock"></span>
-											<input type="password" name="pass" placeholder="Password" pattern="[A-Za-z0-9,.+@]{6,16}" title="Password must contain 6 to 16 numbers no special character allowed other than ,.+@" required>
+											<input type="password" name="pass" placeholder="Password" pattern="[A-Za-z0-9,.+@%&$]{6,16}" title="Password must contain 6 to 16 numbers no special character allowed other than ,.+@%&$" required>
 										</div>
 										<button type="submit" class="reg-btn" style="border-radius: 25px;">Login Now <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
-										<button type="submit" class="facebook-btn" style="border-radius: 25px;">Login
+										<!-- <button type="submit" class="facebook-btn" style="border-radius: 25px;">Login
 											with Facebook <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
 										<button type="submit" class="google-btn" style="border-radius: 25px;">Login with
-											Google <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+											Google <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button> -->
 									</form>
 								</div>
 							</div>

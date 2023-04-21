@@ -164,7 +164,8 @@
 						</div>
 						<div class="tab-content">
 							<div class="tab-pane active" id="confirm_booking">
-								<form class="cb-frm" method="POST" action="php/user-credentails.php" id="rider-info">
+								<div id="user_credentials_fields"></div>
+								<!-- <form class="cb-frm" method="POST" action="php/user-credentails.php" id="rider-info">
 									<div class="col-md-6 col-sm-6">
 										<div class="info-field">
 											<label>First Name</label>
@@ -215,7 +216,7 @@
 												style="border-radius: 25px;">Book Now <i
 													class="fa fa-arrow-circle-right"></i></button></a>
 									</div>
-								</form>
+								</form> -->
 								<!-- Start PayPal Form Section -->
 								<form action="#" method="POST" id="paypal_frm">
 									<input type="hidden" name="cmd" value="_ext-enter">
@@ -487,6 +488,23 @@
 		// Booking summary section ajax End
 	}
 	// Booking summary section function End
+    // ------------------------------------------------------------------------------------
+	// user_credentials_fields
+	
+	// user credentials section function
+	function user_credentials_section_fetch() {
+		// user credentials section ajax
+		$.ajax({
+			url: "php/user-credentials-fields-fetch.php",
+			success: function (load) {
+				document.getElementById("user_credentials_fields").innerHTML = load;
+
+			}
+		})
+
+		// user credentials section ajax End
+	}
+	// user credentials section function End
 
 	// ------------------------------------------------------------------------------------
 
@@ -500,6 +518,9 @@
 
 		// calling function 
 		check_login();
+
+		// calling function
+		user_credentials_section_fetch();
 
 	})
 		// End Event listener

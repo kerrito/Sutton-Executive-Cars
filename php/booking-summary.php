@@ -34,12 +34,12 @@ if (mysqli_num_rows($res) > 0) {
             <li><span>Pickup Time: </span>
                 <div class="pick_time info-outer"><?= $result['pickup_time'] ?></div>
             </li>
-            <li><span>Dropoff Date: </span>
-                <div class="drop_date info-outer"><?= $result['drop_date'] ?></div>
+            <!-- <li><span>Dropoff Date: </span>
+                <div class="drop_date info-outer"></div>
             </li>
             <li><span>Dropoff Time: </span>
-                <div class="drop_time info-outer"><?= $result['drop_time'] ?></div>
-            </li>
+                <div class="drop_time info-outer"></div>
+            </li> -->
             <?php
             if ($result['via_loc'] != "No via location" && !empty($result['via_loc'])) {
                 foreach ($via_location as $value) {
@@ -83,12 +83,12 @@ if (mysqli_num_rows($res) > 0) {
 								<li><span>Pickup Time: </span>
 									<div class="pick_time info-outer">Enter Pickup Time</div>
 								</li>
-								<li><span>Dropoff Date: </span>
+								<!-- <li><span>Dropoff Date: </span>
 									<div class="drop_date info-outer">Enter Dropoff Date</div>
 								</li>
 								<li><span>Dropoff Time: </span>
 									<div class="drop_time info-outer">Enter Dropoff Time</div>
-								</li>
+								</li> -->
 								<li><span>Via Locations: </span>
 									<div class="drop_time info-outer">Enter Via locations</div>
 								</li>
